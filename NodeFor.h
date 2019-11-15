@@ -1,20 +1,27 @@
 #include "Node.h"
 #include "NodeExpression.h"
-class NodeFor
+#include "NodeCommand.h"
+class NodeFor : NodeCommand
 {
-private:
-
 protected:
 
-    NodeExpression *NodeStartOfLoop;
+    NodeExpression *startOfLoop;
 
-    NodeExpression *NodeStopCondition;
+    NodeExpression *stopCondition;
 
-    NodeExpression *NodeEndOfIteration;
+    NodeExpression *endOfIteration;
 
-    Node *NodeForCode;
+    NodeCommand *forCode;
 
 public:
     NodeFor();
     ~NodeFor();
+
+    NodeExpression *getStartOfLoop();
+
+    NodeExpression *getStopCondition();
+
+    NodeExpression *getEndOfIteration();
+
+    NodeCommand *getForCode();
 };

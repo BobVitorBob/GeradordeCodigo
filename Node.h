@@ -1,7 +1,6 @@
+using namespace std;
 class Node
 {
-private:
-
 protected:
 
     Node *next;

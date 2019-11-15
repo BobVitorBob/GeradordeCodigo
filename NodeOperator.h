@@ -8,15 +8,15 @@
 // ReturnType == 1: char
 // ReturnType == 2: ponteiro
 
-class Operator : Node
+class NodeOperator : Node
 {
 protected:
-    int OpId;
+    int opId;
 
-    int ReturnType;
+    int returnType;
 public:
-    Operator();
-    ~Operator();
+    NodeOperator();
+    ~NodeOperator();
     int getOpId();
     int getReturnType();
 };

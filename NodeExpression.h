@@ -1,10 +1,12 @@
 #include "Node.h"
-#include "Operator.h"
-class NodeExpression : public Node
+#include "NodeOperator.h"
+#include "NodeCommand.h"
+class NodeExpression : NodeCommand
 {
-private:
-    Operator *NodeOperator;
+protected:
+    NodeOperator *operator_;
 public:
     NodeExpression();
     ~NodeExpression();
+    NodeOperator *getOperator();
 };

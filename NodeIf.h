@@ -1,13 +1,14 @@
 #include "Node.h"
 #include "NodeExpression.h"
-class NodeIf : public Node
+#include "NodeCommand.h"
+class NodeIf : NodeCommand
 {
-private:
+protected:
     NodeExpression *NodeConditional;
 
-    Node *NodeThen;
+    NodeCommand *NodeThen;
 
-    Node *NodeElse;
+    NodeCommand *NodeElse;
 
 public:
 
@@ -15,4 +16,10 @@ public:
     
     ~NodeIf();
     
+    NodeExpression *getConditional();
+
+    NodeCommand *getThen();
+
+    NodeCommand *getElse();
+
 };
