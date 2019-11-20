@@ -1,7 +1,7 @@
 #include "Node.h"
 #include "NodeOperator.h"
 #include "NodeCommand.h"
-class NodeExpression : NodeCommand
+class NodeExpression : NodeCommand, Node
 {
 protected:
     NodeOperator *operator_;

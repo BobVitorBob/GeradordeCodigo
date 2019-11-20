@@ -1,20 +1,26 @@
 using namespace std;
+enum NodeType{
+    a,
+    b,
+    c,
+    etc
+};
 class Node
 {
 protected:
 
     Node *next;
 
-    int nodeType;
+    NodeType nodeType;
 
 public:
     
-    Node();
+    Node(NodeType nodeType);
 
     ~Node();
 
     Node *getNext();
     
-    int getNodeType();
+    NodeType getNodeType();
 
 };

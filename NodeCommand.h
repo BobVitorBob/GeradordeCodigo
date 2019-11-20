@@ -1,19 +1,21 @@
 #include "Node.h"
-// commandType == 0: do-while
-// commandType == 1: if
-// commandType == 2: while
-// commandType == 3: for
-// commandType == 4: printf
-// commandType == 5: scanf
-// commandType == 6: exit
-// commandType == 7: return
-// commandType == 8: expressões matemáticas. 
+enum CommandType{
+    Do_while,
+    If,
+    While,
+    For,
+    Printf,
+    Scanf,
+    Exit,
+    Return,
+    Expressions
+};
 class NodeCommand : Node
 {
 protected:
-    int commandType;
+    CommandType commandType;
 public:
-    NodeCommand();
+    NodeCommand(CommandType commandType);
     ~NodeCommand();
     int getCommandType();
 };
