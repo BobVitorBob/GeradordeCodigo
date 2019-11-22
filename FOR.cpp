@@ -3,24 +3,30 @@
 #include <iterator>
 #include "FOR.h"
 #include "NodeFor.h"
-#include "NodeExpression"
+#include "NodeExpression.h"
 using namespace std;
 
 list<string> forMIPS;
+int n = 1;
+
+/*
+por causa do n, criar essa classe uma unica vez, e quando precisar usar novamente, limpar o forMIPS
+*/
 
 list<string>::iterator FOR::FOR(NodeFor *node)
 {
+    forMIPS.push_back("FOR"+n+":");
+    n++;
 
-    //chama expressão para inicialização do for
-    //add na lista
+   //chama função que constroi expressão passando node->startOfLoop
+   //add resposta no forMIPS
 
-    //chama expressão para condição do for
-    //add na lista
+   //chama função que constroi expressão passando node->stopCondition
+   //add resposta no forMIPS
 
-    //marca espaço do codigo com CODIGO e salva pos
+   //chama função que constroi expressão passando node->endOfIteration
+   //add resposta no forMIPS
 
-    //chama expressão para passo do for
-    //add na lista
-
-    //return pos salva p/codigo
+   forMIPS.push_back("CODE");
+   forMIPS.push_back("j FOR"+n);
 }

@@ -12,12 +12,9 @@ list<string> defsMIPS;
     .asciiz - string/chars
 */
 
-DEFS::DEFS(/*estrutura AST*/)
+DEFS::DEFS(/*symbolTable*/)
 {
-    //inicializa defMIPS com .data
+    defsMIPS.push_back(".data\n");
     
-    //percorre estrutura passada
-        //(switch case) identifica tipo de declaração: #define, int, char, pointer(void, int, char)
-        //e redireciona a função adequada -> return tradução p/ mips
-        //add na lista
+    
 }
