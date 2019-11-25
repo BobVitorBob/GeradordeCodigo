@@ -1,35 +1,31 @@
 #include "NodeBinaryOperator.h"
 
-BinaryNodeOperator::BinaryNodeOperator(OpId opId, OpType opType, int returnType){
-
-    this->next = nullptr;
+NodeBinaryOperator::NodeBinaryOperator(BinaryOpType binaryOpType, ReturnType returnType) : NodeOperator(binaryOp, returnType){
     this->leftSon = nullptr;
     this->rightSon = nullptr;
-    this->opId = opId;
-    this->opType = opType;
-    this->returnType = returnType;
+    this->binaryOpType = binaryOpType;
 }
 
-BinaryNodeOperator::~BinaryNodeOperator(){
+NodeBinaryOperator::~NodeBinaryOperator(){
     delete this;
 }
 
-NodeOperator *BinaryNodeOperator::getLeftSon(){
+NodeOperator *NodeBinaryOperator::getLeftSon(){
     return this->leftSon;
 }
 
-NodeOperator *BinaryNodeOperator::getRightSon(){
+NodeOperator *NodeBinaryOperator::getRightSon(){
     return this->rightSon;
 }
 
-void BinaryNodeOperator::setLeftSon(NodeOperator *leftSon){
+void NodeBinaryOperator::setLeftSon(NodeOperator *leftSon){
     this->leftSon = leftSon;
 }
 
-void BinaryNodeOperator::setRightSon(NodeOperator *rightSon){
+void NodeBinaryOperator::setRightSon(NodeOperator *rightSon){
     this->rightSon = rightSon;
 }
 
-OpType BinaryNodeOperator::getOpType(){
-    return this->opType;
+BinaryOpType NodeBinaryOperator::getBinaryOpType(){
+    return this->binaryOpType;
 }

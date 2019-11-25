@@ -1,21 +1,25 @@
+#ifndef NODECOMMAND
+#define NODECOMMAND
 #include "Node.h"
 enum CommandType{
-    Do_while,
-    If,
-    While,
-    For,
-    Printf,
-    Scanf,
-    Exit,
-    Return,
-    Expressions
+    CDo_while,
+    CIf,
+    CWhile,
+    CFor,
+    CPrintf,
+    CScanf,
+    CExit,
+    CReturn,
+    CExpression
 };
-class NodeCommand : Node
+class NodeCommand : public Node
 {
 protected:
     CommandType commandType;
 public:
+    NodeCommand() = default;
     NodeCommand(CommandType commandType);
     ~NodeCommand();
     int getCommandType();
 };
+#endif

@@ -1,7 +1,6 @@
 #include "NodeExit.h"
 
-NodeExit::NodeExit(CommandType commandType, NodeExpression *exitValue){
-    this->commandType = commandType;
+NodeExit::NodeExit(NodeExpression *exitValue) : NodeCommand((CommandType) CExit){
     this->exitValue = exitValue;
 }
 

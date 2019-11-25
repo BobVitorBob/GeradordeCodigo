@@ -1,11 +1,14 @@
+#ifndef NODERETURN
+#define NODERETURN
 #include "NodeCommand.h"
 #include "NodeExpression.h"
-class NodeReturn : NodeCommand
+class NodeReturn : public NodeCommand
 {
 protected:
     NodeExpression *returnValue;
 public:
-    NodeReturn();
+    NodeReturn(NodeExpression *returnValue);
     ~NodeReturn();
     NodeExpression *getReturnValue();
 };
+#endif

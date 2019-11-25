@@ -1,20 +1,26 @@
+#ifndef NODEVARIABLE
+#define NODEVARIABLE
 #include "Node.h"
 #include <string>
-// ReturnType == 0: int
-// ReturnType == 1: char
-// ReturnType == 2: ponteiro
-class NodeVariable : Node
+enum VarType{
+    VInt,
+    VChar,
+    VPointer
+};
+
+class NodeVariable : public Node
 {
 protected:
 
     string name;
-    int type;
+    VarType varType;
     void *value;
 
 public:
-    NodeVariable();
+    NodeVariable(string name, void *value, VarType varType);
     ~NodeVariable();
     string getName();
-    int getType();
+    VarType getVarType();
     void *getValue();
 };
+#endif

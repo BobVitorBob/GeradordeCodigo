@@ -1,6 +1,8 @@
+#ifndef NODEWHILE
+#define NODEWHILE
 #include "NodeCommand.h"
 #include "NodeExpression.h"
-class NodeWhile : NodeCommand
+class NodeWhile : public NodeCommand
 {
 protected:
 
@@ -9,8 +11,9 @@ protected:
     NodeExpression *stopCondition;
 
 public:
-    NodeWhile(/* args */);
+    NodeWhile(NodeCommand *commands, NodeExpression *stopCondition);
     ~NodeWhile();
     NodeCommand *getCommands();
     NodeCommand *getStopCondition();
 };
+#endif

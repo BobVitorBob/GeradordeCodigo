@@ -1,7 +1,6 @@
 #include "NodeDoWhile.h"
 
-NodeDoWhile::NodeDoWhile(CommandType CommandType){
-    this->commandType = commandType;
+NodeDoWhile::NodeDoWhile() : NodeCommand((CommandType) CDo_while){
     this->commands = nullptr;
     this->stopCondition = nullptr;
 }

@@ -1,14 +1,16 @@
+#ifndef NODEIF
+#define NODEIF
 #include "Node.h"
 #include "NodeExpression.h"
 #include "NodeCommand.h"
-class NodeIf : NodeCommand
+class NodeIf : public NodeCommand
 {
 protected:
-    NodeExpression *NodeConditional;
+    NodeExpression *conditional;
 
-    NodeCommand *NodeThen;
+    NodeCommand *then;
 
-    NodeCommand *NodeElse;
+    NodeCommand *else_;
 
 public:
 
@@ -23,3 +25,4 @@ public:
     NodeCommand *getElse();
 
 };
+#endif

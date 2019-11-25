@@ -1,22 +1,27 @@
+#ifndef NODEFUNCTION
+#define NODEFUNCTION
 #include "Node.h"
-#include "NodeSymbolTable.h"
 #include "NodeVariable.h"
 #include "NodeCommand.h"
-class NodeFunction : Node
+#include "NodeSymbol.h"
+#include <string>
+class NodeFunction : public Node
 {
 protected:
-    
-    NodeSymbolTable *symbolTable;
+
+    string functionName;
+    NodeSymbol *symbolTable;
     NodeVariable *param;
-    int returnType;
     NodeCommand *commands;
+    ReturnType returnType;
 
 public:
-    NodeFunction();
+    NodeFunction(string functionName, NodeVariable *param, NodeSymbol *symbolTable, NodeCommand *commands, ReturnType returnType);
     ~NodeFunction();
-
-    NodeSymbolTable *getSymbolTable();
+    string getFunctionName();
+    NodeSymbol *getSymbolTable();
     NodeVariable *getParam();
-    int getReturnType();
+    ReturnType getReturnType();
     NodeCommand *getCommands();
 };
+#endif

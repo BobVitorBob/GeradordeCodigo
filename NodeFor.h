@@ -1,7 +1,9 @@
+#ifndef NODEFOR
+#define NODEFOR
 #include "Node.h"
 #include "NodeExpression.h"
 #include "NodeCommand.h"
-class NodeFor : NodeCommand
+class NodeFor : public NodeCommand
 {
 protected:
 
@@ -15,6 +17,7 @@ protected:
 
 public:
     NodeFor();
+    
     ~NodeFor();
 
     NodeExpression *getStartOfLoop();
@@ -25,3 +28,4 @@ public:
 
     NodeCommand *getForCode();
 };
+#endif

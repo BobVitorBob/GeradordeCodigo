@@ -1,22 +1,24 @@
+#ifndef NODEOPERATOR
+#define NODEOPERATOR
 #include "Node.h"
 
-// OpId == 0: Operador Unário
-// OpId == 1: Operador Binário
-// OpId == 2: Valor Puro
+enum OpId{
+    unaryOp,
+    binaryOp,
+    trueValue
+};
 
-// ReturnType == 0: int
-// ReturnType == 1: char
-// ReturnType == 2: ponteiro
-
-class NodeOperator : Node
+class NodeOperator : public Node
 {
 protected:
-    int opId;
+    OpId opId;
 
-    int returnType;
+    ReturnType returnType;
 public:
-    NodeOperator();
+    NodeOperator() = default;
+    NodeOperator(OpId opId, ReturnType returnType);
     ~NodeOperator();
-    int getOpId();
-    int getReturnType();
+    OpId getOpId();
+    ReturnType getReturnType();
 };
+#endif

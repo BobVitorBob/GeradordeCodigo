@@ -1,39 +1,42 @@
+#ifndef NODEBINARYOPERATOR
+#define NODEBINARYOPERATOR
 #include "NodeOperator.h"
-enum OpType{
-plus,
-minus,
-multiply,
-div,
-remainder,
-bitwise_and,
-bitwise_or,
-bitwise_xor,
-logical_and,
-logical_or,
-equal,
-no_equal,
-less_than,
-greater_than,
-less_equal,
-greater_equal,
-r_shift,
-l_shift,
-assign,
-add_assign,
-minus_assign
+enum BinaryOpType{
+BPlus,
+BMinus,
+BMultiply,
+BDiv,
+BRemainder,
+BBitwise_and,
+BBitwise_or,
+BBitwise_xor,
+BLogical_and,
+BLogical_or,
+BEqual,
+BNot_equal,
+BLess_than,
+BGreater_than,
+BLess_equal,
+BGreater_equal,
+BR_shift,
+BL_shift,
+BAssign,
+BAdd_assign,
+BMinus_assign
 };
-class BinaryNodeOperator : NodeOperator, Node
+class NodeBinaryOperator : public NodeOperator
 {
 protected:
-    OpType opType;
+    BinaryOpType binaryOpType;
     NodeOperator *leftSon;
     NodeOperator *rightSon;
 public:
-    BinaryNodeOperator(OpId opId, OpType opType, int returnType);
-    ~BinaryNodeOperator();
+    NodeBinaryOperator(BinaryOpType binaryOpType, ReturnType returnType);
+    ~NodeBinaryOperator();
     void setLeftSon(NodeOperator *leftSon);
     void setRightSon(NodeOperator *rightSon);
     NodeOperator *getLeftSon();
     NodeOperator *getRightSon();
-    OpType getOpType();
+    BinaryOpType getBinaryOpType();
 };
+#endif

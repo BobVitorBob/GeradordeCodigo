@@ -1,14 +1,18 @@
+#ifndef NODESCANF
+#define NODESCANF
 #include "NodeCommand.h"
+#include "NodeVariable.h"
 #include <string>
-class NodeScanf : NodeCommand
+class NodeScanf : public NodeCommand
 {
 protected:
     string formatString;
 
-    void *variable;
+    NodeVariable *variable;
 public:
-    NodeScanf();
+    NodeScanf(string formatString, NodeVariable *variable);
     ~NodeScanf();
     string getFormatString();
-    void *getVariable();
+    NodeVariable *getVariable();
 };
+#endif

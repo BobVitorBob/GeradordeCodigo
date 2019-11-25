@@ -1,6 +1,6 @@
 #include "NodeCommand.h"
 
-NodeCommand::NodeCommand(CommandType commandType){//que porar é ssa caralho tiltei
+NodeCommand::NodeCommand(CommandType commandType) : Node(NCommand){
     this->commandType = commandType;
 }
 

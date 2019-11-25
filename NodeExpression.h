@@ -1,12 +1,15 @@
+#ifndef NODEEXPRESSION
+#define NODEEXPRESSION
 #include "Node.h"
 #include "NodeOperator.h"
 #include "NodeCommand.h"
-class NodeExpression : NodeCommand, Node
+class NodeExpression : public NodeCommand
 {
 protected:
     NodeOperator *operator_;
 public:
-    NodeExpression();
+    NodeExpression(NodeOperator *operator_);
     ~NodeExpression();
     NodeOperator *getOperator();
 };
+#endif

@@ -1,12 +1,26 @@
+#ifndef NODEUNARYOPERATOR
+#define NODEUNARYOPERATOR
 #include "NodeOperator.h"
-class UnaryNodeOperator : NodeOperator
+enum UnaryOpType{
+UPlus,
+UPointer,
+UMinus,
+UInc,
+UDec,
+UBitwise_not,
+UNot,
+UBitwise_and
+};
+
+class NodeUnaryOperator : public NodeOperator
 {
 protected:
     NodeOperator *son;
-    int opType;
+    UnaryOpType unaryOpType;
 public:
-    UnaryNodeOperator();
-    ~UnaryNodeOperator();
+    NodeUnaryOperator(UnaryOpType unaryOpType, ReturnType returnType);
+    ~NodeUnaryOperator();
     NodeOperator *getSon();
-    int getOpType();
+    UnaryOpType getUnaryOpType();
 };
+#endif

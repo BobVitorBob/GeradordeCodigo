@@ -1,11 +1,14 @@
+#ifndef NODEEXIT
+#define NODEEXIT
 #include "NodeExpression.h"
 #include "NodeCommand.h"
-class NodeExit : NodeCommand, Node
+class NodeExit : public NodeCommand
 {
 protected:
     NodeExpression *exitValue;
 public:
-    NodeExit(CommandType commandType, NodeExpression *exitValue);
+    NodeExit(NodeExpression *exitValue);
     ~NodeExit();
     NodeExpression *getExitValue();
 };
+#endif

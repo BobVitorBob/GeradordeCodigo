@@ -1,10 +1,21 @@
+#ifndef NODE
+#define NODE
 using namespace std;
 enum NodeType{
-    a,
-    b,
-    c,
-    etc
+    NProgram,
+    NCommand,
+    NFunction,
+    NOperator,
+    NVariable,
+    NSymbol
 };
+
+enum ReturnType{
+    RInt,
+    RChar,
+    RPointer
+};
+
 class Node
 {
 protected:
@@ -14,13 +25,17 @@ protected:
     NodeType nodeType;
 
 public:
-    
+    Node() = default;
+
     Node(NodeType nodeType);
 
     ~Node();
 
     Node *getNext();
     
+    void setNext(Node *next);
+
     NodeType getNodeType();
 
 };
+#endif

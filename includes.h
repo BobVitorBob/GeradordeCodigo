@@ -1,0 +1,22 @@
+#ifndef INCLUDES
+#define INCLUDES
+#include "Node.h"
+#include "NodeBinaryOperator.h"
+#include "NodeUnaryOperator.h"
+#include "NodeCommand.h"
+#include "NodeDoWhile.h"
+#include "NodeExit.h"
+#include "NodeExpression.h"
+#include "NodeFor.h"
+#include "NodeFunction.h"
+#include "NodeIf.h"
+#include "NodeOperator.h"
+#include "NodePrintf.h"
+#include "NodeProgram.h"
+#include "NodeReturn.h"
+#include "NodeScanf.h"
+#include "NodeUnaryOperator.h"
+#include "NodeValueOperator.h"
+#include "NodeVariable.h"
+#include "NodeWhile.h"
+#endif
