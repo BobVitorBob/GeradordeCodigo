@@ -13,7 +13,7 @@ enum NodeType{
 enum ReturnType{
     RInt,
     RChar,
-    RPointer
+    RVoid
 };
 
 class Node

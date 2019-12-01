@@ -13,14 +13,10 @@ class NodeSymbol : public Node
 protected:
     SymbolType symbolType;
     string name;
-    void *value;
-    ReturnType returnType;
 public:
-    NodeSymbol(SymbolType symbolType, string name, void *value, ReturnType returnType);
+    NodeSymbol(SymbolType symbolType, string name);
     ~NodeSymbol();
     SymbolType getSymbolType();
     string getName();
-    void *getValue();
-    ReturnType getReturnType();
 };
 #endif

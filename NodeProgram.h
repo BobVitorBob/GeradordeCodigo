@@ -1,20 +1,22 @@
 #ifndef NODEPROGRAM
 #define NODEPROGRAM
 #include "Node.h"
-#include "NodeFunction.h"
-#include "NodeVariable.h"
+#include "NodeSymbolFunction.h"
+#include "NodeSymbolVariable.h"
 #include "NodeSymbol.h"
 class NodeProgram : public Node
 {
 protected:
     
     NodeSymbol *symbolTable;
-    NodeFunction *functions;
+    NodeSymbolFunction *functions;
 
 public:
-    NodeProgram(NodeFunction *functions, NodeSymbol *symbolTable);
+    NodeProgram(NodeSymbolFunction *functions=nullptr, NodeSymbol *symbolTable=nullptr);
     ~NodeProgram();
-    NodeFunction *getFunctions();
+    NodeSymbolFunction *getFunctions();
     NodeSymbol *getSymbolTable();
+    void setNewFunction(NodeSymbolFunction *function);
+    void setNewSymbol(NodeSymbol *symbol);
 };
 #endif

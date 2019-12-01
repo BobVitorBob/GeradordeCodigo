@@ -1,10 +1,8 @@
 #include "NodeSymbol.h"
 
-    NodeSymbol::NodeSymbol(SymbolType symbolType, string name, void *value, ReturnType returnType) : Node(NSymbol){
+    NodeSymbol::NodeSymbol(SymbolType symbolType, string name) : Node(NSymbol){
         this->symbolType = symbolType;
         this->name = name;
-        this->value = value;
-        this->returnType = returnType;
     }
 
     NodeSymbol::~NodeSymbol(){
@@ -17,12 +15,4 @@
 
     string NodeSymbol::getName(){
         return this->name;
-    }
-
-    void *NodeSymbol::getValue(){
-        return this->value;
-    }
-
-    ReturnType NodeSymbol::getReturnType(){
-        return this->returnType;
     }

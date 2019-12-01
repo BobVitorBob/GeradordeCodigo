@@ -8,7 +8,7 @@
 #include "NodeExit.h"
 #include "NodeExpression.h"
 #include "NodeFor.h"
-#include "NodeFunction.h"
+#include "NodeSymbolFunction.h"
 #include "NodeIf.h"
 #include "NodeOperator.h"
 #include "NodePrintf.h"
@@ -17,6 +17,8 @@
 #include "NodeScanf.h"
 #include "NodeUnaryOperator.h"
 #include "NodeValueOperator.h"
-#include "NodeVariable.h"
+#include "NodeSymbolVariable.h"
 #include "NodeWhile.h"
+#include "NodeSymbolConstant.h"
+#include "NodeSymbolFunction.h"
 #endif
