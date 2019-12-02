@@ -16,3 +16,11 @@
     string NodeSymbol::getName(){
         return this->name;
     }
+
+    void NodeSymbol::setName(string name){
+        this->name = name;
+    }
+    
+    void NodeSymbol::setSymbolType(SymbolType symbolType){
+        this->symbolType = symbolType;
+    }

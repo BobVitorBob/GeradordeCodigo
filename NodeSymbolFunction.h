@@ -9,24 +9,24 @@ class NodeSymbolFunction : public NodeSymbol
 {
 protected:
 
-    string functionName;
     NodeSymbol *symbolTable;
+    NodeSymbol *paramList;
     NodeCommand *commands;
     ReturnType returnType;
     int pointerLvl;
 
 public:
-    NodeSymbolFunction(string functionName=string(""), NodeSymbol *symbolTable=nullptr, NodeCommand *commands=nullptr, ReturnType returnType=RVoid);
+    NodeSymbolFunction(string name=string(""), NodeSymbol *symbolTable=nullptr, NodeCommand *commands=nullptr, ReturnType returnType=RVoid);
     ~NodeSymbolFunction();
-    string getFunctionName();
     NodeSymbol *getSymbolTable();
+    NodeSymbol *getParamList();
     ReturnType getReturnType();
     NodeCommand *getCommands();
     int getPointerLvl();
     void setPointerLvl(int pointerLvl);
-    void setFunctionName(string functionName);
     void setReturnType(ReturnType RType);
     void addNewSymbol(NodeSymbol *newSymbol);
+    void addNewParam(NodeSymbol *newParam);
     void addNewCommand(NodeCommand *newCommand);
 };
 #endif

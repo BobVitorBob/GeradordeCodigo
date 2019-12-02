@@ -17,8 +17,16 @@ NodeExpression *NodeDoWhile::getStopCondition(){
     return this->stopCondition;
 }
 
-void NodeDoWhile::setCommands(NodeCommand *commands){
-    this->commands = commands;
+void NodeDoWhile::addCommand(NodeCommand *newCommand){
+    NodeCommand *next = this->commands;
+    if (next != nullptr) while (next->getNext() != nullptr)
+    {
+        next = (NodeCommand*) next->getNext();
+    }else{
+        this->commands = newCommand;
+        return;
+    }
+    next->setNext(newCommand);
 }
 
 void NodeDoWhile::setStopCondition(NodeExpression *stopCondition){

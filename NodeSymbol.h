@@ -18,5 +18,7 @@ public:
     ~NodeSymbol();
     SymbolType getSymbolType();
     string getName();
+    void setName(string name);
+    void setSymbolType(SymbolType symbolType);
 };
 #endif

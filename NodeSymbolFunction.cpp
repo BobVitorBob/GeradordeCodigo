@@ -1,13 +1,11 @@
 #include "NodeSymbolFunction.h"
 
-    NodeSymbolFunction::NodeSymbolFunction(string functionName, NodeSymbol *symbolTable, NodeCommand *commands, ReturnType returnType) : NodeSymbol(SFunction, functionName){
-        printf("Got here!\n");
-        this->functionName = functionName;
-        printf("Got here!\n");
+    NodeSymbolFunction::NodeSymbolFunction(string name, NodeSymbol *symbolTable, NodeCommand *commands, ReturnType returnType) : NodeSymbol(SFunction, name){
+        
         this->returnType = returnType;
-        printf("Got here!\n");
+        
         this->symbolTable = symbolTable;
-        printf("Got here!\n");
+        
         this->commands = commands;
     }
 
@@ -15,12 +13,12 @@
         delete this;
     }
 
-    string NodeSymbolFunction::getFunctionName(){
-        return this->functionName;
-    }
-
     NodeSymbol *NodeSymbolFunction::getSymbolTable(){
         return this->symbolTable;
+    }
+
+    NodeSymbol *NodeSymbolFunction::getParamList(){
+        return this->paramList;
     }
 
     ReturnType NodeSymbolFunction::getReturnType(){
@@ -37,11 +35,6 @@
 
     void NodeSymbolFunction::setPointerLvl(int pointerLvl){
         this->pointerLvl = pointerLvl;
-    }
-
-
-    void NodeSymbolFunction::setFunctionName(string functionName){
-        this->functionName = functionName;
     }
 
     void NodeSymbolFunction::setReturnType(ReturnType RType){
@@ -70,4 +63,16 @@
             return;
         }
         next->setNext(newCommand);
+    }
+
+    void NodeSymbolFunction::addNewParam(NodeSymbol *newParam){
+        NodeSymbol *next = this->paramList;
+        if (next != nullptr) while (next->getNext() != nullptr)
+        {
+            next = (NodeSymbol*) next->getNext();
+        }else{
+            this->paramList = newParam;
+            return;
+        }
+        next->setNext(newParam);
     }

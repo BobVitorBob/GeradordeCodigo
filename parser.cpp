@@ -137,7 +137,7 @@ tuple<ReturnType, int> resolveFuncReturn(string s){
     return make_tuple(varType, cLvl);
 }
 
-void setFuncParameter(vector <string> programV, int * startPos, NodeSymbolFunction *newFunction){
+NodeSymbolVariable *resolveFuncParameter(vector <string> programV, int * startPos){
     int i = *startPos;
     i++;
     NodeSymbolVariable *newVar = new NodeSymbolVariable();
@@ -148,11 +148,11 @@ void setFuncParameter(vector <string> programV, int * startPos, NodeSymbolFuncti
     newVar->setVarType(get<0>(varRType));
     newVar->setPointerLvl(get<1>(varRType));
     newVar->setArrayDimension(get<2>(varRType));
-    newFunction->addNewSymbol(newVar);
     *startPos = i;
+    return newVar;
 }
 
-void setFuncVariable(vector <string> programV, int * startPos, NodeSymbolFunction *newFunction){
+NodeSymbolVariable *resolveFuncVariable(vector <string> programV, int * startPos){
     int i = *startPos;
     i++;
     NodeSymbolVariable *newVar = new NodeSymbolVariable();
@@ -163,105 +163,161 @@ void setFuncVariable(vector <string> programV, int * startPos, NodeSymbolFunctio
     newVar->setVarType(get<0>(varRType));
     newVar->setPointerLvl(get<1>(varRType));
     newVar->setArrayDimension(get<2>(varRType));
-    newFunction->addNewSymbol(newVar);
     *startPos = i;
+    return newVar;
 }
 
-NodeDoWhile *resolveDoWhile(string s){
+NodeCommand *resolveCommand(string s, int *startPos=nullptr);
+NodeExpression *resolveExpression(string s, int *startPos=nullptr);
 
+NodeDoWhile *resolveDoWhile(string s, int *startPos=nullptr){
+    int *i = startPos;
+    *i+=9;
+    printf("StartPos: %d\n s[i]: %c\n", *startPos, s[*i]);
+    NodeDoWhile *newDoWhile = new NodeDoWhile();
+    NodeCommand *DoWhileCommands;
+    while(s[*startPos] != ',')
+    {
+        newDoWhile->addCommand(resolveCommand(s, startPos));
+        *startPos++;
+    }
+    newDoWhile->setStopCondition(resolveExpression(s, startPos));
 }
 
-NodeIf *resolveIf(string s){
-
+NodeIf *resolveIf(string s, int *startPos=nullptr){
+    return nullptr;
 }
 
-NodeWhile *resolveWhile(string s){
-
+NodeWhile *resolveWhile(string s, int *startPos=nullptr){
+    return nullptr;
 }
 
-NodeFor *resolveFor(string s){
-
+NodeFor *resolveFor(string s, int *startPos=nullptr){
+    return nullptr;
 }
 
-NodePrintf *resolvePrintf(string s){
-
+NodePrintf *resolvePrintf(string s, int *startPos=nullptr){
+    return nullptr;
 }
 
-NodeScanf *resolveScanf(string s){
-
+NodeScanf *resolveScanf(string s, int *startPos=nullptr){
+    return nullptr;
 }
 
-NodeExit *resolveExit(string s){
-
+NodeExit *resolveExit(string s, int *startPos=nullptr){
+    return nullptr;
 }
 
-NodeReturn *resolveReturn(string s){
-
+NodeReturn *resolveReturn(string s, int *startPos=nullptr){
+    return nullptr;
 }
 
-NodeExpression *resolveExpression(string s){
-
+NodeExpression *resolveExpression(string s, int *startPos=nullptr){
+    //BPlus,
+    //BMinus,
+    //BMultiply,
+    //BDiv,
+    //BRemainder,
+    //BBitwise_and,
+    //BBitwise_or,
+    //BBitwise_xor,
+    //BLogical_and,
+    //BLogical_or,
+    //BEqual,
+    //BNot_equal,
+    //BLess_than,
+    //BGreater_than,
+    //BLess_equal,
+    //BGreater_equal,
+    //BR_shift,
+    //BL_shift,
+    //BAssign,
+    //BAdd_assign,
+    //BMinus_assign,
+    //unary
+    //UPlus,
+    //UPointer,
+    //UMinus,
+    //UInc,
+    //UDec,
+    //UBitwise_not,
+    //UNot,
+    //UBitwise_and
+    NodeExpression *expression = new NodeExpression();
+    if(startPos == nullptr) startPos = new int(0);
+    string op = 
 }
 
-
-void setFuncCommand(vector <string> programV, int * startPos, NodeSymbolFunction *newFunction){
-    return;
+NodeCommand *resolveCommand(string s, int *startPos=nullptr){
     int i = *startPos;
-        if(programV[i].compare("DO_WHILE") == 0)
+        if(s[0] == 'D')
         {
-            newFunction->addNewCommand(resolveDoWhile(programV[i]));
+            return resolveDoWhile(s, startPos);
         }
-        else if(programV[i].compare("IF") == 0){
-            newFunction->addNewCommand(resolveDoWhile(programV[i]));
+        else if(s[0] == 'I')
+        {
+            return resolveIf(s, startPos);
         }
-        else if(programV[i].compare("WHILE") == 0){
-            newFunction->addNewCommand(resolveDoWhile(programV[i]));
+        else if(s[0] == 'W')
+        {
+            return resolveWhile(s, startPos);
         }
-        else if(programV[i].compare("FOR") == 0){
-            newFunction->addNewCommand(resolveDoWhile(programV[i]));
+        else if(s[0] == 'F')
+        {
+            return resolveFor(s, startPos);
         }
-        else if(programV[i].compare("PRINTF") == 0){
-            newFunction->addNewCommand(resolveDoWhile(programV[i]));
+        else if(s[0]== 'P')
+        {
+            return resolvePrintf(s, startPos);
         }
-        else if(programV[i].compare("SCANF") == 0){
-            newFunction->addNewCommand(resolveDoWhile(programV[i]));
+        else if(s[0] == 'S')
+        {
+            return resolveScanf(s, startPos);
         }
-        else if(programV[i].compare("EXIT") == 0){
-            newFunction->addNewCommand(resolveDoWhile(programV[i]));
+        else if(s[0] == 'E')
+        {
+            return resolveExit(s, startPos);
         }
-        else if(programV[i].compare("RETURN") == 0){
-            newFunction->addNewCommand(resolveDoWhile(programV[i]));
+        else if(s[0]== 'R')
+        {
+            return resolveReturn(s, startPos);
         }
-        else{
-            newFunction->addNewCommand(resolveDoWhile(programV[i]));
+        else
+        {
+            return resolveExpression(s, startPos);
         }
     *startPos = i;
 }
 
-NodeSymbolFunction *readFunction(vector <string> programV, int *startPos){
+NodeSymbolFunction *readFunction(vector <string> programV, int *startPos=nullptr){
     int i = *startPos;
     i++;
     NodeSymbolFunction *newFunction = new NodeSymbolFunction();
     string funcName(programV[i].c_str());
-    newFunction->setFunctionName(funcName);
+    newFunction->setName(funcName);
     i+=2;
     tuple<ReturnType, int> funcRetType = resolveFuncReturn(programV[i]);
     newFunction->setReturnType(get<0>(funcRetType));
     newFunction->setPointerLvl(get<1>(funcRetType));
     i++;
+    int *zero = new int(0);
     while (true)
     {
         *startPos = i;
         if(programV[i].compare("END_FUNCTION") == 0) break;
         else if(programV[i].compare("PARAMETER:") == 0)
         {
-            setFuncParameter(programV, startPos, newFunction);
+            newFunction->addNewSymbol(resolveFuncParameter(programV, startPos));
         }
-        else if(programV[i].compare("VARIABLE:") == 0){
-            setFuncVariable(programV, startPos, newFunction);
-        }else{
-            setFuncCommand(programV, startPos, newFunction);
+        else if(programV[i].compare("VARIABLE:") == 0)
+        {
+            newFunction->addNewSymbol(resolveFuncVariable(programV, startPos));
         }
+        else{
+            newFunction->addNewCommand(resolveCommand(programV[i], zero));
+            *startPos++;
+        }
+        i = *startPos;
         i++;
     }
     *startPos = i;
@@ -348,7 +404,7 @@ void printAllFunctions(NodeProgram *program){
             }
             symbol = (NodeSymbol*) symbol->getNext();
         }
-        printf("Commands: %s\n", functions->getName().c_str());
+        //printf("Commands: %s\n", functions->getName().c_str());
         printf("Return Type: %d\n", functions->getReturnType());
         printf("Pointer Lvl: %d\n", functions->getPointerLvl());
 

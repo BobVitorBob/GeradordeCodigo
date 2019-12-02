@@ -10,5 +10,9 @@
     }
 
     NodeOperator *NodeExpression::getOperator(){
+        return this->operator_;
+    }
 
+    void NodeExpression::getOperator(NodeOperator *operator_){
+        this->operator_ = operator_;
     }

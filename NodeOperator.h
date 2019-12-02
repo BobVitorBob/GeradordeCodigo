@@ -5,6 +5,7 @@
 enum OpId{
     unaryOp,
     binaryOp,
+    function,
     trueValue
 };
 

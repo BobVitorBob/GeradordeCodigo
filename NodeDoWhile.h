@@ -15,7 +15,7 @@ public:
     ~NodeDoWhile();
     NodeCommand *getCommands();
     NodeExpression *getStopCondition();
-    void setCommands(NodeCommand *commands);
+    void addCommand(NodeCommand *newCommand);
     void setStopCondition(NodeExpression *stopCondition);
 };
 #endif
