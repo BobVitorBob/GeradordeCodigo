@@ -15,10 +15,13 @@ class liveness
         map<int, string> vars;
         string interfs;
 
-        liveness(string code);
+        liveness(list<string> code, int numBlocks);
     private:
-        map<string, list<string>> Def_Use(string code);
-        
+        /*necessario pré-processamento - add flag FIM abaixo de chamada de funções*/
+        map<int, list<string>> Def_Use(list<string> code);
+        map<int, list<string>> In_Out(int numBlocks, map<int, list<string>> defUse);
+        map<string, list<string>> build_interfs(list<string> code, map<int, list<string>> inOut, int numBlocks);
+        map<int, list<string>> insertDefUse(string simb, string numDU, map<int, list<string>> uses);
 };
 
 #endif

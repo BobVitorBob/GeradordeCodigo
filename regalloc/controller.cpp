@@ -14,10 +14,10 @@
 #include "liveness.h"
 using namespace std;
 
-map<string, int> REGALLOC(string code)
+map<string, int> REGALLOC(list<string> code, int numBlocks)
 {
 /* LIVENESS ANALISYS */
-liveness* LA = new liveness(code);
+liveness* LA = new liveness(code, numBlocks);
 
 /* BUILD: construir grafo */  
 grafo* GD = new grafo();

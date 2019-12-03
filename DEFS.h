@@ -3,14 +3,16 @@
 
 #include <iostream>
 #include <list>
-//class node/tabela passado
+#include "DEFS.h"
+#include "NodeSymbol.h"
 using namespace std;
 
 class DEFS
 {
     public:
         list<string> defsMIPS;
-        DEFS(/*node/tabela de defs*/);
+        DEFS();
+        void AddDef(NodeSymbol *simbs);
 };
 
 #endif
