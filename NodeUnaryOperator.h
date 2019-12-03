@@ -1,6 +1,7 @@
 #ifndef NODEUNARYOPERATOR
 #define NODEUNARYOPERATOR
 #include "NodeOperator.h"
+#include "NodeExpression.h"
 enum UnaryOpType{
 UPlus,
 UPointer,
@@ -15,12 +16,12 @@ UBitwise_and
 class NodeUnaryOperator : public NodeOperator
 {
 protected:
-    NodeOperator *son;
+    NodeExpression *son;
     UnaryOpType unaryOpType;
 public:
     NodeUnaryOperator(UnaryOpType unaryOpType, ReturnType returnType);
     ~NodeUnaryOperator();
-    NodeOperator *getSon();
+    NodeExpression *getSon();
     UnaryOpType getUnaryOpType();
 };
 #endif

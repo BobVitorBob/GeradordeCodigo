@@ -1,6 +1,7 @@
 #ifndef NODEBINARYOPERATOR
 #define NODEBINARYOPERATOR
 #include "NodeOperator.h"
+#include "NodeExpression.h"
 enum BinaryOpType{
 BPlus,
 BMinus,
@@ -28,15 +29,15 @@ class NodeBinaryOperator : public NodeOperator
 {
 protected:
     BinaryOpType binaryOpType;
-    NodeOperator *leftSon;
-    NodeOperator *rightSon;
+    NodeExpression *leftSon;
+    NodeExpression *rightSon;
 public:
     NodeBinaryOperator(BinaryOpType binaryOpType, ReturnType returnType);
     ~NodeBinaryOperator();
-    void setLeftSon(NodeOperator *leftSon);
-    void setRightSon(NodeOperator *rightSon);
-    NodeOperator *getLeftSon();
-    NodeOperator *getRightSon();
+    void setLeftSon(NodeExpression *leftSon);
+    void setRightSon(NodeExpression *rightSon);
+    NodeExpression *getLeftSon();
+    NodeExpression *getRightSon();
     BinaryOpType getBinaryOpType();
 };
 #endif

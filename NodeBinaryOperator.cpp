@@ -10,19 +10,19 @@ NodeBinaryOperator::~NodeBinaryOperator(){
     delete this;
 }
 
-NodeOperator *NodeBinaryOperator::getLeftSon(){
+NodeExpression *NodeBinaryOperator::getLeftSon(){
     return this->leftSon;
 }
 
-NodeOperator *NodeBinaryOperator::getRightSon(){
+NodeExpression *NodeBinaryOperator::getRightSon(){
     return this->rightSon;
 }
 
-void NodeBinaryOperator::setLeftSon(NodeOperator *leftSon){
+void NodeBinaryOperator::setLeftSon(NodeExpression *leftSon){
     this->leftSon = leftSon;
 }
 
-void NodeBinaryOperator::setRightSon(NodeOperator *rightSon){
+void NodeBinaryOperator::setRightSon(NodeExpression *rightSon){
     this->rightSon = rightSon;
 }
 

@@ -171,11 +171,8 @@ NodeCommand *resolveCommand(string s, int *startPos=nullptr);
 NodeExpression *resolveExpression(string s, int *startPos=nullptr);
 
 NodeDoWhile *resolveDoWhile(string s, int *startPos=nullptr){
-    int *i = startPos;
-    *i+=9;
-    printf("StartPos: %d\n s[i]: %c\n", *startPos, s[*i]);
+    *startPos+=9;
     NodeDoWhile *newDoWhile = new NodeDoWhile();
-    NodeCommand *DoWhileCommands;
     while(s[*startPos] != ',')
     {
         newDoWhile->addCommand(resolveCommand(s, startPos));
@@ -212,7 +209,36 @@ NodeReturn *resolveReturn(string s, int *startPos=nullptr){
     return nullptr;
 }
 
-NodeExpression *resolveExpression(string s, int *startPos=nullptr){
+string getOperator(string s, int *startPos){
+    string op;
+    while(s[*startPos] != '('){
+        op.append(&s[*startPos], 1);
+        *startPos = *startPos + 1;
+    }
+    return op;
+}
+
+bool isBinary(string s, int *startPos){
+    int i = *startPos;
+    int aux = 0;
+    while(true){
+        if(s[i] == '('){
+            aux++;
+        }
+        else if(s[i] == ')' && aux != 0){
+            aux--;
+        }
+        else if(s[i] == ')' && aux == 0){
+            return false;
+        }
+        else if(s[i] == ',' && aux == 0){
+            return true;
+        }
+        i = i + 1;
+    }
+}
+
+NodeExpression *resolveExpression(string s, int *startPos){
     //BPlus,
     //BMinus,
     //BMultiply,
@@ -243,50 +269,57 @@ NodeExpression *resolveExpression(string s, int *startPos=nullptr){
     //UBitwise_not,
     //UNot,
     //UBitwise_and
+    printf("resolveCommand(%c, %d)\n", s[*startPos], *startPos);
     NodeExpression *expression = new NodeExpression();
-    if(startPos == nullptr) startPos = new int(0);
-    string op = 
+    string op = getOperator(s, startPos);
+    *startPos = *startPos + 1;
+    NodeExpression *leftson;
+    NodeExpression *rightson;
+//    if(isVar(s, startPos)){
+//  }
+    leftson = resolveExpression(s, startPos);
+    if(isBinary(s, startPos)){
+        rightson = resolveExpression(s, startPos);
+    }
 }
 
-NodeCommand *resolveCommand(string s, int *startPos=nullptr){
-    int i = *startPos;
-        if(s[0] == 'D')
-        {
-            return resolveDoWhile(s, startPos);
-        }
-        else if(s[0] == 'I')
-        {
-            return resolveIf(s, startPos);
-        }
-        else if(s[0] == 'W')
-        {
-            return resolveWhile(s, startPos);
-        }
-        else if(s[0] == 'F')
-        {
-            return resolveFor(s, startPos);
-        }
-        else if(s[0]== 'P')
-        {
-            return resolvePrintf(s, startPos);
-        }
-        else if(s[0] == 'S')
-        {
-            return resolveScanf(s, startPos);
-        }
-        else if(s[0] == 'E')
-        {
-            return resolveExit(s, startPos);
-        }
-        else if(s[0]== 'R')
-        {
-            return resolveReturn(s, startPos);
-        }
-        else
-        {
-            return resolveExpression(s, startPos);
-        }
-    *startPos = i;
+NodeCommand *resolveCommand(string s, int *startPos){
+    if(s[*startPos] == 'D')
+    {
+        return resolveDoWhile(s, startPos);
+    }
+    else if(s[*startPos] == 'I')
+    {
+        return resolveIf(s, startPos);
+    }
+    else if(s[*startPos] == 'W')
+    {
+        return resolveWhile(s, startPos);
+    }
+    else if(s[*startPos] == 'F')
+    {
+        return resolveFor(s, startPos);
+    }
+    else if(s[*startPos]== 'P')
+    {
+        return resolvePrintf(s, startPos);
+    }
+    else if(s[*startPos] == 'S')
+    {
+        return resolveScanf(s, startPos);
+    }
+    else if(s[*startPos] == 'E')
+    {
+        return resolveExit(s, startPos);
+    }
+    else if(s[*startPos]== 'R')
+    {
+        return resolveReturn(s, startPos);
+    }
+    else
+    {
+        return resolveExpression(s, startPos);
+    }
 }
 
 NodeSymbolFunction *readFunction(vector <string> programV, int *startPos=nullptr){

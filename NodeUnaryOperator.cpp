@@ -9,7 +9,7 @@
         delete this;
     }
 
-    NodeOperator *NodeUnaryOperator::getSon(){
+    NodeExpression *NodeUnaryOperator::getSon(){
         return this->son;
     }
 
