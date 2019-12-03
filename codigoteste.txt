@@ -1,0 +1,11 @@
+AST -->
+
+
+FUNCTION: main
+   RETURN_TYPE: int
+   VARIABLE: a TYPE: int
+   VARIABLE: b TYPE: int
+   VARIABLE: c TYPE: int
+
+DO_WHILE(=(i,+(i,1)),<(a[i],v));
+END_FUNCTION
